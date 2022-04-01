@@ -1,0 +1,62 @@
+<div class="background bg-light-color">
+  <div class="container pt-3">
+    <div class="h3 font-weight-bold font-green3 text-center mt-5 mb-md-5 pl-3 pl-md-0"> Vos informations personelles</div>
+    <div class="row d-flex justify-content-center pt-5 pb-5">
+      <div class="col-lg-6 col-xl-7 col-md-8 ml-lg-0 ">
+        <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+          Information mise à jour avec succès.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="alertError">
+          La modification de vos informations a été echouée        </div>
+        <br>
+        <form [formGroup]="contactForm" class="needs-validation" novalidate>
+          <div class="form-group row ">
+            <label class="col-md-2 form-control-label text-right">
+              Nom
+            </label>
+            <div class="col-md-10 ">
+              <input type="text" class="form-control input-background" placeholder="Nom,prénom" name="firstName"
+                [(ngModel)]="customerObject.name" formControlName="name">
+              <div class="invalid-feedback">Ce champ est obligatoire.</div>
+            </div>
+          </div>
+
+          <div class="form-group row ">
+            <label class="col-md-2 form-control-label text-right">
+              Téléphone
+            </label>
+            <div class="col-md-10 ">
+              <input type="number" class="form-control input-background" name="tel" [(ngModel)]="contactObject.tel"
+                formControlName="tel" placeholder="Télephone">
+              <div class="invalid-feedback">Ce champ est obligatoire.</div>
+            </div>
+          </div>
+
+          <div class="form-group row ">
+            <label class="col-md-2 form-control-label text-right">
+              E-mail
+            </label>
+            <div class="col-md-10 ">
+              <input type="email" class="form-control input-background" name="email" [(ngModel)]="contactObject.email" readonly
+                formControlName="email" aria-describedby="emailHelp" placeholder="E-mail">
+              <div class="invalid-feedback">Champ vide ou format email invalide</div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mt-4 mb-5">
+            <button type="submit" class="rounded-pill green3 border-white text-white-color text-center"
+              (click)="update()" [disabled]="!contactObject.email">
+              <div class="h6 mt-2 mr-5 ml-5">Enregistrer</div>
+            </button>
+          </div>
+        </form>
+        <div class="d-flex mt-2">
+          <div routerLink="/setting" class="cursor-pointer h6 mr-2 mr-md-4"> < Mon compte</div>
+          <div routerLink="/" class="cursor-pointer h6"> <img src="assets/house-door-fill.svg" class="pb-1"> Accueil</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-slogan></app-slogan>

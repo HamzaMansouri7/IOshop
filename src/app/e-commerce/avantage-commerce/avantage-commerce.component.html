@@ -1,0 +1,18 @@
+<div class="background bg-light-color">
+    <div class="container pt-3">
+        <div class="h1 font-weight-bold green4 text-center mt-4 mb-5"> E-Boutique</div>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <div class="row d-inline-flex ml-md-5">
+            <div class="col-md-5 col-sm-12 ml-2 mb-4" *ngFor="let card of cards">
+                <app-card-boutique [cards]="card" ></app-card-boutique>
+            </div>
+        </div>
+
+    </div>
+    <app-newsletter></app-newsletter>
+</div>
+
+
+

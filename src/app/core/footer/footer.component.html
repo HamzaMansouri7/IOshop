@@ -1,0 +1,88 @@
+<div class="row w-100  m-0">
+    <img src="https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630057123/cutedFooter_j6pnp0.png" width="100%" height="auto" class="footer1" *ngIf="!mobileMode">
+    <img src="https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630059748/newmobileFoter_gxxcoi.png" width="100%" height="100" class="footer1" *ngIf="mobileMode">
+    <div class="green3 w-100 h-100">
+        <div class="container green3 ">
+            <div class="justify-content-center text-center">
+                <img src="https://res.cloudinary.com/http-next-ioc-tn/image/upload/v1630334448/fdkniaovzhno5ibvktjg.webp" width="auto" height="80px" class="text-center mb-5">
+
+                    <div class="row align-items-center mr-0">
+                        <div class="col-md-4 col-sm-10 pb-md-5 mt-md-2">
+                            <div class="text-white-color text-center pb-lg-2 h5 pb-md-2">Horaire </div><br *ngIf="mobileMode">
+                            <div class="text-white-color text-center mb-sm-4 "> Du lundi au Samedi </div><br *ngIf="mobileMode">
+                            <div class="text-white-color text-center mb-sm-2">de 8:00h à 12:00h et de 14:00h à 18:00h </div><br
+                                *ngIf="mobileMode">
+                        </div>
+
+                        <div class="col-md-4 col-sm-10 pb-lg-5">
+                            <hr *ngIf="mobileMode" class="ml-5 mr-4 ">
+                            <div class="text-white-color text-center pb-2 h5">Coordonnées </div><br *ngIf="mobileMode">
+                            <div class="text-white-color text-center"> Adresse:  Route Gremda Km 7 Sfax   </div><br
+                                *ngIf="mobileMode">
+                            <div class="text-white-color text-center">Téléphone:  56.04.00.75 </div><br
+                                *ngIf="mobileMode">
+                            <div class="text-white-color text-center">Email: herbabio.tunisie@gmail.com</div><br *ngIf="mobileMode">
+                        </div>
+                        <div class="col-md-4 col-sm-10 p-md-0 pb-md-4">
+                            <hr *ngIf="mobileMode" class="ml-5 mr-4 ">
+                            <div class="text-white-color text-center pb-2 h5">Avez-vous des questions? </div><br
+                                *ngIf="mobileMode">
+                            <div class="text-white-color text-center"> Ecrivez-nous un message, </div><br *ngIf="mobileMode">
+                            <div class="text-white-color text-center ml-1">nous serons ravis de pouvoir vous apporter notre aide!
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end mt-md-4 mt-lg-0">
+                        <button
+                            class="rounded-pill bg-transparent border-white text-white-color text-center mr-lg-5 btn-contact"  routerLink="/contactez-nous">
+                            <div class="pt-2 pb-2 pr-4 pl-4">CONTACTEZ-NOUS</div>
+                        </button>
+                    </div>
+                <br *ngIf="mobileMode">
+                <div class="container" *ngIf="mobileMode">
+                    <div class="col-sm-10">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="container d-inline-flex " *ngIf="mobileMode">
+                    <div class="d-flex justify-content-start col-10">
+                        <div class="h5 text-white"> Menu</div>
+                    </div>
+                    <div class="d-flex justify-content-end col-2" *ngIf="!showMenu">
+                        <div class="h3 text-white cursor-pointer" (click)="openMenu()"> + </div>
+                    </div>
+                    <div class="d-flex justify-content-end col-2" *ngIf="showMenu">
+                        <div class="h3 text-white cursor-pointer" (click)="openMenu()"> - </div>
+                    </div>
+                </div>
+
+                <div class="container pb-3 mt-3 nav-footer" *ngIf="!mobileMode || showMenu">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white h5" routerLink="">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white h5" routerLink="product-list">Produits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white h5" routerLink="E-Boutique">Avantages E-Boutique</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white h5" routerLink="/contactez-nous">Nous Contacter</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container" *ngIf="mobileMode">
+                    <div class="col-sm-10">
+                        <hr>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

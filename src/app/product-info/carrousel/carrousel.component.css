@@ -1,0 +1,65 @@
+@media (min-width:1440px) {
+  .carousel{
+    width: 100%;
+    right: -5%;
+  }
+  .carousel-inner img {
+    width: 73%;
+    background-color:#eeeeee;
+}
+.carousel-inner{
+  max-height: 296px;
+  right: -8%;
+}}
+@media (min-width:1024px) and (max-width:1440px) {
+.carousel-inner img {
+  width: 292px;
+  height: auto;
+  background-color: #eeeeee;
+  margin-left: 9%;
+}
+.carousel{
+  width: 100%;
+  right: -5%;
+}
+.carousel-inner{
+  max-height: 296px;
+  right: 0%;
+}}
+@media (min-width:768px) and (max-width:1023px) {
+.carousel{
+  width: 52%;
+  height: auto;
+}
+}
+@media (min-width:425px) and (max-width:768px) {
+.carousel{
+  width:55%;
+  min-height: 318px;
+}}
+.iput-style{
+width: 102px;
+height: 38px;
+}
+.value-button {
+border: 2px solid #ddd;
+margin: 0px;
+width: 20px;
+height: 18px;
+line-height: 9px;
+font-size: x-large;
+}
+@media (min-width:300px) and (max-width:425px) {
+.carousel{
+  width: 100%;
+}}
+:host::ng-deep .card,.btn{
+border-radius: 0rem;
+}
+.product-image{
+width: 100%;
+max-width: 15.63rem;
+margin: 0 auto .9375rem;
+}
+
+

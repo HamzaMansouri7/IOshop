@@ -1,0 +1,98 @@
+
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light  txt-delivery p-3 bg-white" *ngIf="mobileMode">
+        <p class="font-green3 text-center text-justify mb-0"> <b>Livraison Gratuite</b> pour tous commande plus de
+            <b>60dt</b>
+        </p>
+    </nav>
+    <app-banniere [carousels]="carousels"></app-banniere>
+    <app-top-product [promos]="promos"></app-top-product>
+    <div class="background bg-light-color">
+        <div class="container">
+            <br><br>
+            <div class="justify-content-center mb-4">
+                <div class="h2 green4 text-center font-weight-bold mb-5 ml-2"> Le laboratoire Herbabio </div>
+            </div>
+            <div>
+                <br><br>
+                <div class="text-center ml-md-5 ">
+                    <div class="h5 ml-3 text-left">Vous propose :</div>
+                    <div class="h4 brown ml-2 mt-4 font-weight-bold mb-3 text-left">Gamme Morinex </div>
+                    <div class="h6 ml-3 text-left">
+                        Une gamme destinée aux femmes, exclusivement aux extraits des feuilles de Moringa , basés sur
+                        des ingrédients ciblés, bien choisis et étudiés pour réduire les problèmes de peau. Ces produits
+                        sont élaborés pour répondre aux agressions auxquelles la peau et les cheveux sont confrontés,
+                        tout en préservant et en protégeant la peau et les cheveux.
+                    </div>
+                </div>
+
+                <div class="text-center ml-md-5 pb-5 pb-md-3 mt-md-5">
+                    <div class="h4 brown ml-2 mt-4 font-weight-bold mb-3 text-left">Gamme Naturex </div>
+                    <div class="h6 ml-3 text-left">
+                        La peau des bébés est fine, fragile et sensible. il ne peut donc pas se protéger des agressions
+                        extérieures, comme les frottements des couches, l'humidité, l'eau trop calcareuse, chaude,
+                        Froide, le fait de s'allonger .... Par conséquent, une grande vigilance doit être maintenue sur
+                        les produits utilisés pour nettoyer, hydrater et traiter les irritations chez les nourrissons.
+                        utiliser la gamme Naturex yeux fermés qui respecte la peau de nos anges avec des produits 100%
+                        naturels.
+                    </div>
+
+                </div>
+                <div class="justify-content-center  d-block d-md-flex mt-lg-5 ">
+                    <div class="text-center  pt-2">
+                        <a class="mt-3">
+                            <button class="btn rounded-pill border-dark" routerLink="/product-list">
+                                <div class="pr-md-4 pl-md-4 text-size">VENIR EN BOUTIQUE</div>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="text-center   pt-2 pb-5">
+                        <a class="mt-3" routerLink="/contactez-nous">
+                            <button class="btn rounded-pill text-white green3 ml-2">
+                                <div class=" pr-md-4 pl-md-4 text-size">CONTACTEZ-NOUS</div>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row w-100 bg-light-color m-0 midel">
+        <img src="https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630057123/cutedFooter_j6pnp0.png"   width="100%" height="150" class="cuted border-0"
+        *ngIf="!mobileMode && !tabletteMode">
+        <img src="https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630056909/cercle_bvjhgr.png" width="155" height="155"  class="img-cercle">
+        <div class=" green3 w-100">
+            <div class="container">
+                <div class="justify-content-center mb-4 mt-md-5 pt-5 pt-lg-0">
+                    <div class=" text-white-color text-center h5 p-2 pt-5 pt-md-0 ">
+                        Le laboratoire Herbabio en dermo-cosmétiques est un don de la nature.
+                        Toute notre équipe travaille avec passion, sans cesse pour vous proposer des soins 100% naturels qui
+                        vous protège chaque jour face aux aléas climatiques.
+                        Nous sommes au service de votre peau pour vous faire plaisir.
+                    </div>
+                </div>
+            </div>
+                <div class="text-center h6 pt-xl-3 pb-5">
+                    <button class="btn rounded-pill text-white-color green pr-3 pl-3 cursor-pointer" routerLink="/contactez-nous">
+                        CONTACTER-NOUS
+                    </button>
+                </div>
+        </div>
+    </div>
+    <div class="text-center spinner-position" *ngIf="loading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div><br>
+        <span>Chargement des produits</span>
+    </div>
+    <div class="container " *ngIf="data.length >0">
+        <div class="h3 font-weight-bolder font-green3 text-center  mb-5">Nos Produits</div>
+        <div class="h5 mt-5 ml-3">({{count}} Articles)</div>
+        <app-product-carousel></app-product-carousel>
+        <div class="d-flex justify-content-end  pt-5 pt-md-3 pb-5 pb-md-3" routerLink="/product-list">
+            <div class="mr-4 h5">></div>
+            <div class="mr-4 h5"> <u class="cursor-pointer"> Voir tous les produits</u> </div>
+        </div>
+    </div>
+    <app-slogan></app-slogan>
+</div>

@@ -1,0 +1,25 @@
+<ngb-carousel #carousel class="carousel carousel-dark slide">
+    <ng-template ngbSlide *ngFor="let img of images;">
+        <div class="carousel-caption">
+            <div class="row mt-5">
+                <div class="">
+                    <a class="show-btn ">
+                        <button class="btn rounded-pill text-drack-color btn-boutique mb-md-2 small-txt" routerLink="/product-list">
+                            VENIR EN BOUTIQUE
+                        </button>
+                    </a>&nbsp;
+                    <a routerLink="/contactez-nous">
+                        <button class="btn rounded-pill text-white-color green3 mb-md-2 small-txt">
+                            CONTACTEZ-NOUS
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a>
+            <div class="picsum-img-wrapper">
+                <img [src]="img" width="100%" height="auto"  class="image-baniere" alt="Herbabio.tn">
+            </div>
+        </a>
+    </ng-template>
+</ngb-carousel>

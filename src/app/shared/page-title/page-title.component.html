@@ -1,0 +1,19 @@
+<div class="pt-5 pb-5 silver-bg-color">
+  <div class="container text-center">
+    <div class="text-capitalize h3">{{this.routings[this.routings.length-1].nameRoute}}</div>
+    <div class="mr-3">
+      <div class="d-inline-block">
+        <a class="nav-link text-dark p-0" routerLink="">
+          <p class="text-capitalize cursor-pointer silver-color"> Accueil </p>
+        </a>
+      </div>
+
+      <div class="d-inline-block" *ngFor="let route of routings">
+        <div class="d-inline-block ml-3">
+          <p class="text-capitalize cursor-pointer silver-color" *ngIf="route.nameRoute != routings[this.routings.length-1].nameRoute" routerLink="{{route.path}}">{{route.nameRoute}}</p>
+          <p class="text-capitalize silver-color"  *ngIf="route.nameRoute == routings[this.routings.length-1].nameRoute">{{route.nameRoute}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

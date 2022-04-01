@@ -1,0 +1,85 @@
+<div class="background bg-light-color">
+    <div class="container pt-3">
+        <div class="h1 font-weight-bold font-green3 text-center mt-4 mb-5"> Contact</div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-3 col-xl-4 col-md-8  ml-md-5 ml-lg-5 ml-xl-0 ">
+                <form class="ml-xl-3">
+                    <div class="form-group">
+                        <div class="h4 font-green3 ml-4 ml-md-0">Raison Sociale</div>
+                        <hr class="green3">
+                        <div class="d-inline-flex p-0">
+                            <img src="assets/envelope.svg" alt="" class="mr-4">
+                            <div class="h6 text-dark mb-0 ">Route Gremda Km 7 Sfax   </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group d-inline-flex p-0">
+                        <img src="assets/telephone.svg" alt="" class="mr-4 mt-3">
+                        <div class="h6 text-dark mb-0 mt-3  "> <a class="text-decoration-none text-dark" href="tel:0021656040075"> 00216 56 04 00 75</a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group d-inline-flex p-0">
+                        <img src="assets/phone.svg" alt="" class="mr-4 mt-3">
+                        <div class="h6 text-dark mb-0 mt-3"><a class="text-decoration-none text-dark" href="tel:0021656040075"> 00216 56 04 00 75</a></div>
+                    </div>
+                    <br>
+                    <div class="form-group d-inline-flex p-0">
+                        <img src="assets/clock.svg" alt="" class="mr-4">
+                        <div class="h6 text-dark mb-0 mt-3"> Lundi-Samedi:<br> de 8:00h à 12:00h  et de 14:00h à 18:00h  <br>
+                            Dimanche: Fermé
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group d-inline-block p-0 mt-3">
+                        <div class="h5"> Restez connectés</div>
+                        <div class="d-inline-flex  ml-5">
+                            <a href="https://www.facebook.com/herbabio" target="_blank"> <img src="assets/facebook.svg" class="mr-4 cursor-pointer"></a>
+                            <a href="https://www.instagram.com/herbabio.tn" target="_blank"><img src="assets/instagram.svg" class="mr-4  cursor-pointer"></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-xl-7 col-md-8  ml-md-5 ml-lg-0 ">
+
+                <form [formGroup]="contactForm" class="needs-validation" novalidate>
+                    <div class="alert alert-success" role="alert" *ngIf="showAlert">
+                        L'envoi de l'E-mail a été effectué avec succès ..
+                      </div>
+                    <div class="form-group">
+                        <div class="h4">Avez-vous des questions?</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-background"
+                            placeholder="Nom,prénom" name="name" [(ngModel)]="contactObject.name"  formControlName="name" >
+                            <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control input-background"  name="tel" [(ngModel)]="contactObject.tel" formControlName="tel"
+                             placeholder="Téléphone" >
+                             <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control input-background"  formControlName="email"   name="email" [(ngModel)]="contactObject.email"
+                            aria-describedby="emailHelp" placeholder="E-mail" >
+                            <div class="invalid-feedback">Champ vide ou format email invalide</div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control input-background textarea-height" formControlName="msg" name="msg" [(ngModel)]="contactObject.msg"
+                            rows="3" placeholder="Message" ></textarea>
+                            <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-4 mb-5">
+                        <button type="submit" class="rounded-pill green3 border-white text-white-color text-center" (click)="sendMail()" [disabled]="!contactObject.email">
+                            <div class="h6 mt-2 mr-5 ml-5">Envoyer</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8 col-lg-9 col-xl-11    ml-md-5 ml-lg-5 ml-xl-0 mb-5">
+                <img src="assets/mapsContact.png" width="100%" height="auto" class="maps-image">
+            </div>
+        </div>
+    </div>
+</div>
+<app-slogan></app-slogan>

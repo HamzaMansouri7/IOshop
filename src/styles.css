@@ -1,0 +1,87 @@
+
+.container{
+  max-width: 1200px;
+}
+
+.rating-start-checked{
+  color: gold;
+}
+.silver-color{
+    color: #6e6e6e;
+}
+
+.white-bg-color{
+  background-color: white;
+}
+
+.carousel {
+  outline-color: transparent;
+}
+
+.cursor-pointer{
+  cursor: pointer
+}
+
+.text-white-color{
+color: white;
+}
+
+.green{
+  background-color:#7ba829
+}
+
+.brown{
+  color:#5a3715
+}
+.brown-background{
+  background-color: #5a3715;
+}
+
+.green3{
+  background-color: #517328;
+}
+.font-green3{
+  color:#517328
+}
+
+.input-background{
+  background-color: #dedede;
+}
+.green4{
+  color: #517328;
+}
+.image-background{
+  background-color: #e7e8ed;
+}
+.carousel-control-prev {
+  opacity: 10;
+  margin-right: -11px;
+}
+.carousel-control-next{
+  opacity: 10;
+  margin-right: 7px;
+}
+.bg-newsletter{
+  background-color: #e6e3df;
+}
+.small-txt{
+  font-size: 13px;
+}
+
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 1200px;
+    width: 95%;
+  }
+}
+.modal-content{
+  width: 100%;
+}
+
+.spinner-position{
+  margin-top: 250px;
+  margin-bottom: 250px;
+}
+.bg-light-color{
+  background-color: #f6f6f6;
+}

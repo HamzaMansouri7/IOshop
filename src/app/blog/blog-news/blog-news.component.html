@@ -1,0 +1,6 @@
+<div class="p-4">
+        <img class="pt-2" width="100%" [src]="data?.pictureId?.url">
+        <app-line-article [date]="data?.createdAt" [author]="data?.author"></app-line-article>
+        <div class="abstract0" [innerHTML]="data?.content"></div>
+        <button class="border border-success text-success font-weight-bold  btn btn-light w-40" routerLink="article/{{data.id}}"><p class="mb-0"> Lire plus </p> </button>
+</div>

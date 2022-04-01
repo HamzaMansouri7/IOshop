@@ -1,0 +1,195 @@
+<div class="background bg-light-color">
+  <div class="container pt-5">
+    <div class="h5 font-weight-bold font-green3 text-center mt-4 mb-5 text-uppercase " *ngIf="!newAccount && !pwdForgot">
+      CONNECTEZ-VOUS À VOTRE COMPTE
+      <hr>
+    </div>
+    <div class="h5 font-weight-bold font-green3 text-center mt-4 mb-5 text-uppercase " *ngIf="newAccount && !pwdForgot">créez votre
+      compte
+      <hr>
+    </div>
+    <div class="h5 font-weight-bold font-green3 text-center mt-4 mb-5 text-uppercase " *ngIf="pwdForgot && !newAccount">MOT DE PASSE OUBLIÉ ?
+      <hr>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-sm-12">
+        <div class="card text-center pt-2 pr-2 pl-2">
+          <div class="text-center">
+            <div class="alert alert-danger text-center" role="alert" *ngIf="alertError">
+              {{msgAlert}}
+            </div>
+            <div class="alert alert-success text-center" role="alert" *ngIf="alertSuccess">
+              {{msgAlert}}
+            </div>
+            <div class="alert alert-success text-center" role="alert" *ngIf="linkSent">
+              <p>S'il y a un compte associé à  <b>{{this.resetMail}}</b>  vous recevrez un email avec un lien pour réinitialiser votre mot de passe.</p>
+             </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginForm" class="needs-validation" novalidate *ngIf="!newAccount && !pwdForgot ">
+              <div class="form-group row mb-3">
+                <label class="col-md-3 form-control-label text-right">
+                  E-mail
+                </label>
+                <div class="col-md-7">
+                  <input class="form-control image-background" type="email" name="email" [(ngModel)]="loginObject.email"
+                    (ngModelChange)="loginChange($event)" formControlName="email" required>
+                  <div class="invalid-feedback text-left">Champ vide ou e-mail invalid</div>
+                </div>
+              </div>
+
+              <div class="form-group row mb-3 ">
+                <label class="col-md-3 text-right">
+                  Mot de passe
+                </label>
+                <div class="col-md-7">
+                  <input class="form-control image-background" name="name" type="password"
+                    [(ngModel)]="loginObject.password" formControlName="password" required maxlength="24">
+                  <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+              <div class="form-group row mb-3">
+                <label class="col-md-3"></label>
+                <div class="col-md-7 d-flex justify-content-between">
+                  <div class="cursor-pointer hovred" (click)="pwdForgot=!pwdForgot;alertError=false;alertSuccess=false"> Mot de passe oubliés ?</div>
+                  <div class="row justify-content-end mr-1">
+                    <span type="submit" class="green3 ml-3 text-white cursor-pointer" (click)="login()">
+                      <div class="h6 mt-2 mb-2 mr-5 ml-5 mr-md-4 ml-md-4 mr-sm-2 ml-sm-2">Connexion</div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <form [formGroup]="contactForm " class="needs-validation" novalidate *ngIf="newAccount && !pwdForgot">
+              <div class="form-group row mb-3 ">
+                <label class="col-md-3 text-right">
+                  Nom et Prenom
+                </label>
+                <div class="col-md-7">
+                  <input class="form-control image-background" placeholder="Nom et Prenom" name="name" type="text"
+                    [(ngModel)]="contactObject.firstName" formControlName="name" required>
+                  <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+              <div class="form-group row mb-3 ">
+                <label class="col-md-3 text-right">
+                  Téléphone
+                </label>
+                <div class="col-md-7">
+                  <input class="form-control image-background" placeholder="Numéro du Téléphone" name="tel" type="number" [(ngModel)]="contactObject.tel"
+                    formControlName="tel" required maxlength="12">
+                  <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+              <div class="form-group row mb-3 ">
+                <label class="col-md-3 form-control-label text-right">
+                  E-mail
+                </label>
+                <div class="col-md-7">
+                  <input class="form-control image-background" type="email" name="email" placeholder="Votre adresse mail"
+                    [(ngModel)]="contactObject.email" formControlName="email" required
+                    (ngModelChange)="valuechange($event)">
+                  <div class="invalid-feedback text-left">Champ vide ou e-mail invalid</div>
+                  <div class="text-danger text-left mt-2" *ngIf="usedMail && contactObject.email">Cette adresse email
+                    est
+                    déja utilisée !</div>
+                </div>
+              </div>
+              <div class="form-group row mb-3 ">
+                <label class="col-md-3 form-control-label text-right">
+                  Mot de passe
+                </label>
+                <div class="col-md-7">
+                  <input class="form-control image-background" name="tel" type="password" placeholder="mot de passe"
+                    [(ngModel)]="signUpObject.password" formControlName="password" required maxlength="12">
+                  <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+
+
+              <form [formGroup]="customerAdress" class="needs-validation" novalidate *ngIf="newAccount">
+                <div class="form-group row ">
+                  <label class="col-md-3 form-control-label text-right">
+                    Adresse
+                  </label>
+                  <div class="col-md-7">
+                    <input class="form-control image-background" name="street" type="text" maxlength="128" placeholder="Votre adresse"
+                      formControlName="street" [(ngModel)]="adressObject.street" required>
+                    <div class="invalid-feedback  text-left">Ce champ est obligatoire.</div>
+                  </div>
+                </div>
+                <div class="form-group row ">
+                  <label class="col-md-3 form-control-label text-right">
+                    Zip / code postal
+                  </label>
+                  <div class="col-md-7">
+                    <input class="form-control image-background" name="geoCode" type="number" minlength="4" placeholder="Code postal"
+                      formControlName="geoCode" [(ngModel)]="adressObject.geoCode" required>
+                    <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                  </div>
+                </div>
+                <div class="form-group row ">
+                  <label class="col-md-3 form-control-label text-right">
+                    Ville
+                  </label>
+                  <div class="col-md-7">
+                    <input class="form-control image-background" name="city" type="text" maxlength="128" minlength="4" placeholder="Ville"
+                      formControlName="city" [(ngModel)]="adressObject.city" required>
+                    <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                  </div>
+                </div>
+                <div class="form-group row mb-3">
+                  <label class="col-md-3 form-control-label"></label>
+                  <div class="col-md-7">
+                    <div class="row justify-content-end mr-1">
+                      <span type="submit" class="green3 ml-3 text-white cursor-pointer" (click)="signup()"
+                        [disabled]="usedMail || customerAdress.invalid">
+                        <div class="h6 mt-2 mb-2 mr-5 ml-5 mr-md-4 ml-md-4 mr-sm-2 ml-sm-2">Inscription</div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </form>
+
+            <form [formGroup]="resetForm" class="needs-validation" novalidate *ngIf="pwdForgot">
+              <div class="h6"> Veuillez renseigner l'adresse e-mail que vous avez utilisée à la création de votre compte. Vous recevrez un lien temporaire pour réinitialiser votre mot de passe.</div>
+                <br>
+              <div class="form-group row mb-3">
+                <label class="col-md-3 form-control-label text-right">
+                  E-mail
+                </label>
+                <div class="col-md-7">
+                  <input class="form-control image-background" placeholder="Votre adresse mail" type="email" name="resetMail" [(ngModel)]="resetMail"  formControlName="resetMail" required>
+                  <div class="invalid-feedback text-left">Champ vide ou e-mail invalid</div>
+                </div>
+              </div>
+
+              <div class="form-group row mb-3">
+                <label class="col-md-3"></label>
+                <div class="col-md-7 d-flex justify-content-between">
+                  <div class="cursor-pointer hovred" (click)="pwdForgot=!pwdForgot; alertError=false;alertSuccess=false;linkSent=false"> Retour vers Connexion</div>
+                  <div class="row justify-content-end mr-1">
+                    <span type="submit" class="green3 ml-3 text-white cursor-pointer" (click)="sendPwdLink()" >
+                      <div class="h6 mt-2 mb-2 mr-5 ml-5 mr-md-4 ml-md-4 mr-sm-2 ml-sm-2" >Envoyer le lien
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+          <div class="card-footer bg-light-color brown cursor-pointer mb-1"
+            (click)="newAccount=!newAccount ;pwdForgot=false; alertError=false;alertSuccess=false ;linkSent=false">
+            <p class="m-0 hovred" *ngIf="!newAccount">Pas de compte ? Créez-en un</p>
+            <p class="m-0 hovred" *ngIf="newAccount">Vous avez déja un Compte</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container"></div>
+  <app-newsletter></app-newsletter>
+</div>

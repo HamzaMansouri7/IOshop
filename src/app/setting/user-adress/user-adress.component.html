@@ -1,0 +1,71 @@
+<div class="background bg-light-color">
+    <div class="container pt-3">
+      <div class="h3 font-weight-bold font-green3 text-center mt-5 mb-md-5 pl-4 "> Vos informations personelles</div>
+      <div class="row d-flex justify-content-center pt-5 pb-5 d-flex">
+        <div class="col-lg-6 col-xl-7 col-md-8 ml-lg-0 ">
+          <div class="alert alert-success" role="alert" *ngIf="alertSuccess">
+            Information mise à jour avec succès.
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="alertError">
+            La modification de vos informations a été echouée        </div>
+          <br>
+            <form [formGroup]="adressForm" class="needs-validation" novalidate>
+              <div class="form-group row ">
+                <label class="col-md-3 form-control-label text-right">
+                  Nom
+                </label>
+                <div class="col-md-9 ">
+                  <input type="text" class="form-control input-background"  name="name"
+                    [(ngModel)]="customerObject.name" formControlName="name">
+                  <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+
+              <div class="form-group row ">
+                <label class="col-md-3 form-control-label text-right">
+                  Ville
+                </label>
+                <div class="col-md-9 ">
+                  <input type="text" class="form-control input-background" name="city"
+                  [(ngModel)]="adressObject.city"    formControlName="city" >
+                  <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                </div>
+              </div>
+
+              <div class="form-group row ">
+                <label class="col-md-3 form-control-label text-right">
+                  Rue
+                </label>
+                <div class="col-md-9 ">
+                  <input type="text" class="form-control input-background" name="street" [(ngModel)]="adressObject.street"
+                    formControlName="street" aria-describedby="emailHelp" >
+                  <div class="invalid-feedback">Champ vide ou format email invalide</div>
+                </div>
+              </div>
+
+              <div class="form-group row ">
+                  <label class="col-md-3 form-control-label text-right">
+                    Code postale
+                  </label>
+                  <div class="col-md-9 ">
+                    <input type="text" class="form-control input-background" name="geoCode" [(ngModel)]="adressObject.geoCode"
+                      formControlName="geoCode" aria-describedby="emailHelp" >
+                    <div class="invalid-feedback">Champ vide ou format email invalide</div>
+                  </div>
+                </div>
+              <div class="d-flex justify-content-end mt-4 mb-5">
+                <button type="submit" class="rounded-pill green3 border-white text-white-color text-center"
+                  (click)="update()" [disabled]="!adressObject.street">
+                  <div class="h6 mt-2 mr-5 ml-5">Enregistrer</div>
+                </button>
+              </div>
+            </form>
+            <div class="d-flex mt-2">
+              <div routerLink="/setting" class="cursor-pointer h6 mr-2 mr-md-4"> < Mon compte</div>
+              <div routerLink="/" class="cursor-pointer h6"> <img src="assets/house-door-fill.svg" class="pb-1"> Accueil</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <app-slogan></app-slogan>

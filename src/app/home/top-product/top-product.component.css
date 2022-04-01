@@ -1,0 +1,50 @@
+.post-content {
+   top: 85%;
+   left: 1%;
+   position: absolute;
+ }
+ .btn-naturex{
+     border-color: #5a3715;
+     background-color: #fafafa;
+  }
+
+   :host ::ng-deep .row {
+      margin-right: 0px;
+    margin-left: 0px;
+     }
+
+
+     @media screen and (max-width: 1024px){
+      .img-height {
+       height: auto;
+     }
+
+   }
+   .post-content {
+      top: 79%;
+      left: 1%;
+      position: absolute;
+    }
+
+     @media screen and (max-width: 768px) and (min-width:450px){
+      .post-content {
+         top: 96px;
+         left: 4px;
+     }
+
+      }
+      @media screen and (max-width: 425px){
+         .post-content {
+            top: 149px;
+        }
+
+
+        .img-height {
+         height: 185px;
+       }
+
+   }
+
+
+
+

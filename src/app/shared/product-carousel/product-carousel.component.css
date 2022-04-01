@@ -1,0 +1,33 @@
+@media screen and (max-width: 760px){
+  ::ng-deep.carousel-indicators{
+   display: none;
+  }
+}
+
+
+
+:host ::ng-deep  .carousel-control-prev-icon, :host ::ng-deep .carousel-control-next-icon {
+  width: 0px;
+  height: 0px;
+}
+:host ::ng-deep .carousel-control-next-icon:after
+{
+content: '❯';
+font-size: 40px;
+color: #5a3715 !important;
+}
+:host ::ng-deep .carousel-control-prev-icon:after {
+content: '❮';
+font-size: 40px;
+color: #5a3715 !important;
+}
+
+:host ::ng-deep .carousel-control-next {
+  right: -3px;
+  top: -46%;
+}
+:host ::ng-deep .carousel-control-prev {
+  left: -18px;
+  top: -45%;
+}
+

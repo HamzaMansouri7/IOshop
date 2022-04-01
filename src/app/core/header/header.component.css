@@ -1,0 +1,111 @@
+@media screen and (max-width: 1024px){
+    .contact{
+        position: relative;
+        right: 6%;
+    }
+}
+@media screen and (min-width: 1440px){
+    .contact{
+        position: relative;
+        right: 22%;
+    }
+}
+
+@media screen and (min-width: 768px){
+
+.navbar-toggler{
+    display: none;
+}
+
+ }
+@media screen and (max-width: 760px){
+    :host ::ng-deep .navbar-light .navbar-toggler {
+        margin-top: -41px;
+    }
+  .btn-menu{
+    margin-top: -40px;
+   }
+   .tel{
+       display: none;
+   }
+   .mode-moblie1{
+    padding-left: 19%;
+   }
+   .logo{
+       margin-left: 45%;
+   }
+  :host ::ng-deep .navbar{
+    padding: 0rem;
+    padding-left: 10px;
+   }
+}
+.item-number{
+    width: 36px;
+    height: 36px;
+    line-height: 31px;
+    border-radius: 50%;
+    background: #517328;
+    margin-left: -14%;
+    padding-top: 3px;
+    position: relative;
+    top: -7px;
+}
+
+@media screen and (max-width: 375px){
+    :host ::ng-deep .navbar-light .navbar-toggler {
+        margin-top: -41px;
+    }
+    .mode-moblie1{
+            padding-left: 24%;
+    }
+    .logo{
+        margin-left: 44%;
+    }
+    .icon-header{
+        width: 48px;
+        height: 37.5px;
+    }
+}
+@media screen and (max-width: 320px){
+        .icon-header{
+            width: 42px;
+            height: 37.5px;
+        }
+        .mode-moblie1{
+            padding-left: 26%;
+        }
+        .container,.navbar{
+            max-width: 320px;
+        }
+        .logo{
+            margin-left: 25%;
+        }
+}
+.nav-change {
+    background-color: #5a3715;
+
+  }
+  .nav-default {
+    background-color: white;
+  }
+  .tel{
+    padding-top: 12px;
+}
+a:hover { COLOR: #5a3715; TEXT-DECORATION: none; font-weight: none }
+
+.dropleft .dropdown-menu{
+    top: 87%;
+    right: 71%;
+}
+.name{
+    overflow: hidden;
+    width:150px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+:host ::ng-deep hr{
+    width: 150px;
+    border-top: 2px solid #627f41;
+    margin-bottom: 0px;
+}

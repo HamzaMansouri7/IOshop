@@ -1,0 +1,49 @@
+<div class="background bg-light-color">
+    <div class="container mt-5">
+        <div class="h1 font-weight-bold  text-center font-green3 pt-5 mb-3">Nos Produits</div>
+        <div>
+            <div class="container">
+                <div class="d-md-flex d-sm-block justify-content-end mb-3 pt-md-3" *ngIf="!loading">
+                    <div class="d-sm-block d-lg-flex d-md-flex">
+                            <a class="mb-2 mr-2" *ngFor="let item of markArray">
+                                <button class="btn rounded-pill border-dark mt-2 "[ngClass]="{'btn-change': id===item.id}"
+                                    (click)="search(item);id=item.id">
+                                    <div class=" text-size">{{item.name}}</div>
+                                </button>
+                            </a>
+                            <a class="mb-2 mr-2">
+                                <button class="btn rounded-pill border-dark mt-2 " [ngClass]="[promoStyle]" (click)="search('promo')">
+                                    <div class="text-size"> Promo</div>
+                                </button>
+                            </a>
+                            <a class="mb-2 mr-2">
+                                <button class="btn rounded-pill border-dark mt-2 " [ngClass]="[allProdStyle]" (click)="search('allProd')">
+                                    <div class="text-size"> Tous les produits</div>
+                                </button>
+                            </a>
+                    </div>
+                </div>
+                <div class="text-center spinner-position" *ngIf="loading">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div><br><br>
+                    <span>Chargement des produits ...</span>
+                </div>
+                <div class="container pt-5" *ngIf="msgError">
+                    <div class="alert alert-warning mt-5 text-center brown font-weight-bold mb-5" role="alert" >
+                        Aucun Produit avec cette marque !
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="!loading">
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let item of products">
+                        <app-product-card [products]="item"></app-product-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-slogan></app-slogan>

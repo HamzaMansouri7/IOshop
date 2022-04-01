@@ -1,0 +1,12 @@
+<div class="row p-3" *ngIf="!mobileMode">
+  <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of product">
+    <app-product-card [products]="item"></app-product-card>
+  </div>
+</div>
+<div *ngIf="mobileMode">
+  <ngb-carousel #carousel class="carousel carousel-dark slide">
+    <ng-template ngbSlide *ngFor="let products of data;">
+      <app-product-card [products]="products"></app-product-card>
+    </ng-template>
+  </ngb-carousel>
+</div>

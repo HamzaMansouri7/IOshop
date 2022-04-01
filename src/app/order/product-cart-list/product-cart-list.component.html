@@ -1,0 +1,94 @@
+<br><br>
+<div class="container d-flex">
+    <div class="row w-100 ml-1">
+        <div class="col-lg-9 col-xl-8 col-sm-12 mb-3 pr-0">
+            <div class="card shadow">
+                <div class="card-block">
+                    <div class="h4 font-weight-bold mt-3 ml-3 text-uppercase">Panier</div>
+                </div>
+                <hr>
+                <div *ngIf="productArray">
+                    <ul class="mt-3 pl-2 mb-5" *ngFor="let product of productArray">
+                        <div class="d-md-flex d-sm-block" >
+                            <div class="col-md-5 col-sm-12 d-flex mr-xl-0 p-0">
+                                <div class="ml-3 d-flex ">
+                                    <img src="{{product.pictures[0].url}}" width="auto" height="80"  class="image-background mr-2" *ngIf="product.pictures">
+                                    <div>
+                                           <div class="text-size prod-name nameLink cursor-pointer" routerLink="/product-detail/{{product.id}}">{{product.name}}</div>
+                                    <div class="prod-name">
+                                        <span class="label">Catégorie:</span>
+                                        <span class="value"> {{product.categoryId.name}}</span>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 pl-2">
+                                        <div class="row  d-flex ">
+                                            <div class="col-md-4 col-sm-2 d-flex">
+                                                <div class="d-block mobile">
+                                                    <input class="iput-style mr-3 text-right " type="number"   name="quantity" min="1" [(ngModel)]="product.quantity" (ngModelChange)="valuechange($event,product.id)"  >
+                                                    <small class="text-danger text-justify" *ngIf="product.quantity<1">Veuillez saisir un quantité valide</small>
+                                                </div>
+                                                <form class="d-inline-block mt-1  ">
+                                                    <div class="value-button mb-1 font-green3 cursor-pointer"
+                                                        (click)="increaseValue(product.quantity,product.id)" value="Increase Value"><b>+</b>
+                                                    </div>
+                                                    <div class="value-button mb-2 font-green3 cursor-pointer pl-1"
+                                                        (click)="decreaseValue(product.quantity,product.id)" value="Decrease Value"><b>-</b>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-8 col-sm-4 text-left d-flex mt-2 p-0">
+                                                <table class="table table-borderless price-tab">
+                                                    <thead>
+                                                      <tr>
+                                                        <th class="p-0 text-center" scope="col">PU</th>
+                                                        <th  class="p-0 text-center" scope="col">PT</th>
+                                                        <th  class="p-0" scope="col"></th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr>
+                                                        <td class="pl-0 pr-0 text-center"> {{product.productPrices[0].price  | currency:'DT':'symbol':'1.2-3':'fr'}}</td>
+                                                        <td class="pl-0 pr-0 text-center"> {{product.productPrices[0].price *  product.quantity | currency:'DT':'symbol':'1.2-3':'fr'}}</td>
+                                                        <td class="p-0 text-center"><img src="assets\trash-fill.svg" alt="" (click)="deleteFromCookie(product.id)"
+                                                            class="ml-2 pt-3" height="" width="20">
+                                                        </td>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="h5 ml-4 mb-4 " *ngIf="productArray?.length<1">Vous n'avez aucun article dans votre panier. </div>
+            </div>
+            <div class="ml-3 mt-3 cursor-pointer" routerLink="/product-list"> <b class="mr-2"><</b> Continuer mes achats</div>
+        </div>
+        <div class="col-lg-3 col-xl-4 col-sm-12">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <div class="card-block mt-3">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="ml-2" *ngIf="productArray"><b>{{itemNumber}}</b> Element(s)</div>
+                        <div class="ml-2" *ngIf="!productArray">0 Element</div>
+                        <div class="mr-2">{{totalAmount | currency:'DT':'symbol':'1.2-3':'fr' }}</div>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3 image-background">
+                        <div class="mt-2 mb-2 ml-2">TTC&nbsp;(tax incl.)</div>
+                        <div class="mt-2 mb-2 font-weight-bold mr-2">{{totalAmount | currency:'DT':'symbol':'1.2-3':'fr'}}</div>
+                    </div>
+                </div>
+                <div class="text-center" *ngIf="productArray?.length>0">
+                    <button type="button" class="btn rounded-pill text-white border-dark green3 text-uppercase m-1 d-inline-flex m-1  text-center" routerLink="order-add" [disabled]="qtError"><img
+                        src="assets/tick-white.svg" alt="" height="20px" width="15px" class="ml-3 pb-1 mr-2 mt-2">
+                    <p class="mt-1 mb-1 mr-4">Commander</p>
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-newsletter></app-newsletter>

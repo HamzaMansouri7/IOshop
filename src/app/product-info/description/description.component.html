@@ -1,0 +1,53 @@
+<section *ngIf="productDetails">
+  <ul ngbNav  [(activeId)]="active" #nav="ngbNav" class="nav-tabs" >
+    <li [ngbNavItem]="1">
+      <a ngbNavLink class="font-weight-bold text-secondary text-uppercase">Description</a>
+      <ng-template ngbNavContent> <div class="d-inline-block">     
+    <div *ngIf="productDetails.description" [innerHTML]="productDetails.description"  class="mt-4 mb-5 d-flex align-items-center"></div>
+    </div></ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink class="font-weight-bold text-secondary text-uppercase">Avis des clients</a>
+      <ng-template ngbNavContent> 
+        <div *ngIf="productDetails.customerReviews" [innerHTML]="productDetails.customerReviews" class="mt-4 mb-5 d-flex align-items-center"></div>
+        <div *ngIf="!productDetails.customerReviews"  class="h1 text-center mt-5 mb-5 text-secondary">Non Disponible</div>
+    </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink class="font-weight-bold text-secondary text-uppercase">Politique de livraison</a>
+      <ng-template ngbNavContent>
+        <div *ngIf="productDetails.deliveryPolicy" [innerHTML]="productDetails.deliveryPolicy" class="mt-4 mb-5 d-flex align-items-center"></div>
+        <div *ngIf="!productDetails.deliveryPolicy"  class="h1 text-center mt-5 mb-5 text-secondary">Non Disponible</div>
+  
+    </ng-template>
+    </li>
+    <li [ngbNavItem]="4">
+      <a ngbNavLink class="font-weight-bold text-secondary text-uppercase">Guide des tailles</a>
+      <ng-template ngbNavContent> 
+        <div *ngIf="productDetails.sizeGuide" [innerHTML]="productDetails.sizeGuide" class="mt-4 mb-5  d-flex align-items-center"></div>
+        <div *ngIf="!productDetails.sizeGuide"  class="h1 text-center mt-5 mb-5 text-secondary">Non Disponible</div>
+  
+    </ng-template>
+    </li>
+    <li [ngbNavItem]="5">
+      <a ngbNavLink class="font-weight-bold text-secondary text-uppercase">Politique d'échange</a>
+      <ng-template ngbNavContent>
+        <div *ngIf="productDetails.exchangePolicy" [innerHTML]="productDetails.exchangePolicy" class="mt-4 mb-5 d-flex align-items-center"></div>
+        <div *ngIf="!productDetails.exchangePolicy"  class="h1 text-center mt-5 mb-5 text-secondary">Non Disponible</div>
+  
+    </ng-template>
+    </li>
+    <li [ngbNavItem]="6">
+      <a ngbNavLink class="font-weight-bold text-secondary text-uppercase">Video</a>
+      <ng-template ngbNavContent> 
+        <div  class="mt-5 mb-5 d-flex justify-content-center">
+          <div  [innerHTML]="productDetails.video" *ngIf="productDetails.video?.changingThisBreaksApplicationSecurity"></div>
+          <div *ngIf="!withVideo"  class="h1 text-center mt-5 mb-5 text-secondary">Non Disponible</div>
+        </div>
+  
+    </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+</section>
+

@@ -1,0 +1,60 @@
+.btn-boutique{
+    border-color: black;
+    background-color: #edebeb;
+ }
+ :host ::ng-deep .carousel-caption  {
+     position: absolute;
+     bottom: 20px;
+     left: 45%;
+     z-index: 10;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     color: #fff;
+     text-align: center;
+ }
+
+ @media screen and (max-width: 1024px){
+     .image-baniere{
+         height: auto;
+     }
+ }
+
+
+ @media screen and (max-width: 375px){
+     :host ::ng-deep .carousel  {
+         height: 202px;
+         top: -6px;
+         margin-bottom: 41px;
+         display: block;
+        }
+ }
+ @media screen and (max-width: 657px){
+     .show-btn{
+         display: none;
+     }
+
+     .image-baniere{
+         height: 250px;
+     }
+ }
+
+
+
+ :host ::ng-deep  .carousel-control-prev-icon, :host ::ng-deep .carousel-control-next-icon {
+         width: 0px;
+         height: 0px;
+     }
+
+ :host ::ng-deep .carousel-control-next-icon:after
+ {
+   content: '❯';
+   font-size: 40px;
+   color: #5a3715 !important;
+ }
+ :host ::ng-deep .carousel-control-prev-icon:after {
+ content: '❮';
+   font-size: 40px;
+   color: #5a3715 !important;
+ }
+
+

@@ -1,0 +1,57 @@
+@media screen and (min-width: 2560px){
+  .newsletter-height{
+    height: 400px;
+    position: relative;
+    top: 222px;
+}
+
+  .news-block{
+    bottom: -60px;
+    position: relative;
+  }
+}
+@media screen and (min-width: 768px) and (max-width:2560px){
+
+  .newsletter-height{
+    height: 367px;
+    position: relative;
+    top: 125px;
+}
+.news-block{
+  bottom: -60px;
+  position: relative;
+}
+}
+
+  @media screen and (min-width: 425px) and (max-width:768px){
+    .newsletter-height{
+      height: 305px;
+      position: relative;
+      top: 87px;
+    }
+    .news-block{
+      position: relative;
+      top: 16px;
+  }
+  .send{
+    margin: 14px;
+  }
+
+}
+@media screen and (min-width: 300px) and (max-width:425px){
+  .newsletter-height{
+    height: 305px;
+    position: relative;
+    top: 43px;
+  }
+  .news-block{
+    position: relative;
+    top: 16px;
+}
+.send{
+  margin: 14px;
+}
+
+}
+
+

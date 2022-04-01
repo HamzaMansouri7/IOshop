@@ -1,0 +1,10 @@
+<app-page-title></app-page-title>
+<div class="container pt-5">
+    <img class="pt-2" width="100%" [src]="news[0]?.pictureId?.url">
+    <div [innerHTML]="news[0]?.title"></div>
+    <div [innerHTML]="news[0]?.content"></div>
+    <app-line-article [date]="date" [author]="author"></app-line-article>
+    <app-related-news></app-related-news>
+    <app-email-form></app-email-form>
+</div>
+<app-newsletter></app-newsletter>

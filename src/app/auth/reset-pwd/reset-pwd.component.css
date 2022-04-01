@@ -1,0 +1,28 @@
+@media screen and (min-width:1024px) {
+
+    .background{
+      background-image: url(https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630055234/page-header_swig9b.jpg);
+      background-repeat: no-repeat;
+      background-size: cover ;
+      position: relative;
+      width: 100%;
+    }
+
+  }
+  @media screen and (min-width:300px) and (max-width:768px) {
+    .background{
+      background-image: url(https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630055234/page-header_swig9b.jpg);
+      background-repeat: no-repeat;
+      background-size: contain ;
+      position: relative;
+      width: 100%;
+    }
+}
+:host ::ng-deep hr{
+    width: 120px;
+    border-top: 2px solid #5a3715;
+    margin-bottom: 0;
+}
+:host::ng-deep .btn,input,.card{
+    border-radius: 0rem;
+}

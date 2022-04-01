@@ -1,0 +1,70 @@
+<div class="background bg-light-color">
+    <div class="container pt-5">
+        <div class="h5 font-weight-bold font-green3 text-center mt-4 mb-5 text-uppercase ">
+            Modifier votre mot de passe Herbabio
+            <hr>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-sm-12">
+                <div class="card text-center pt-2 pr-2 pl-2">
+                    <div class="text-center">
+                        <div class="alert alert-danger text-center" role="alert" *ngIf="alertError">
+                            {{msgAlert}}
+                        </div>
+                        <div class="alert alert-success text-center" role="alert" *ngIf="Success">
+                            {{msgAlert}}
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="resetPwdForm" class="needs-validation" novalidate>
+                            <div class="form-group row mb-3">
+                                <label class="col-md-4 text-right">
+                                    Mot de passe
+                                </label>
+                                <div class="col-md-7">
+                                    <input class="form-control image-background" name="name" type="password"
+                                        [(ngModel)]="PwdObject.password" formControlName="password" required
+                                        maxlength="24">
+                                    <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3 ">
+                                <label class="col-md-4 text-right">
+                                    Retapez le mot de passe
+                                </label>
+                                <div class="col-md-7">
+                                    <input class="form-control image-background" name="name" type="password"
+                                        [(ngModel)]="PwdObject.rePassword" formControlName="rePassword"  (ngModelChange)="rePwdChanges($event)" required
+                                        maxlength="24">
+                                    <div class="invalid-feedback text-left">Ce champ est obligatoire.</div>
+                                    <div class="text-success text-left mt-2" *ngIf="alertSuccess">Les mots de passe sont identiques</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label class="col-md-4"></label>
+                                <div class="col-md-7">
+                                    <div class="row justify-content-end mr-1">
+                                        <span type="submit" class="green3 ml-3 text-white cursor-pointer"
+                                            (click)="update()">
+                                            <div class="h6 mt-2 mb-2 mr-5 ml-5 mr-md-4 ml-md-4 mr-sm-2 ml-sm-2">
+                                                Modifier</div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="d-flex mt-4">
+                    <div routerLink="/setting" class="cursor-pointer h6 mr-2 mr-md-4"> < Mon compte </div>
+                    <div routerLink="/" class="cursor-pointer h6"> <img src="assets/house-door-fill.svg" class="pb-1"> Accueil</div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="container"></div>
+    <app-newsletter></app-newsletter>
+</div>

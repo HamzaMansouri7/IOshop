@@ -1,0 +1,17 @@
+.background{
+  background-image: url(https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630055234/page-header_swig9b.jpg);
+  background-repeat: no-repeat;
+  background-size: contain ;
+  position: relative;
+  width: 100%;
+}
+
+@media screen and (min-width:1450px) {
+  .background{
+    background-image: url(https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630055234/page-header_swig9b.jpg);
+    background-repeat: no-repeat;
+    background-size: cover ;
+    position: relative;
+    width: 100%;
+  }
+}

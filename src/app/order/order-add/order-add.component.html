@@ -1,0 +1,407 @@
+<br><br>
+<div class="container d-flex">
+  <div class="row w-100 ml-1">
+    <div class="col-lg-8 col-sm-12 mb-3">
+      <div class="alert alert-success" role="alert" *ngIf="alertSuccess && mailSent">
+        {{msgAlert}}
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="alertError">
+        {{msgAlert}}
+      </div>
+      <ngb-accordion #acc="ngbAccordion" activeIds="{{tabActive}}">
+        <ngb-panel id="ngb-panel-0">
+          <ng-template ngbPanelTitle>
+            <div class="text-dark h5">Renseignements personnels</div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="row">
+              <div class="col-12">
+                <div class="d-flex mt-3">
+                  <div class="h6 mr-3 cursor-pointer" (click)="isLogin = false">Créer un compte</div>
+                  <div class="h6 mr-3">|</div>
+                  <div class="h6 mr-3 cursor-pointer" (click)="isLogin = true ; usedMail=false">S'identifier</div>
+                </div>
+
+                <div class="mt-5">
+                  <form [formGroup]="loginForm" class="needs-validation" novalidate *ngIf="isLogin">
+                    <div class="form-group row ">
+                      <label class="col-md-3 form-control-label text-right">
+                        E-mail 
+                      </label>
+                      <div class="col-md-6">
+                        <input class="form-control image-background" type="email" name="email" [(ngModel)]="loginmail"  
+                          formControlName="email" required>
+                        <div class="invalid-feedback">Champ vide ou e-mail invalid</div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row ">
+                      <label class="col-md-3 text-right">
+                        Mot de passe
+                      </label>
+                      <div class="col-md-6">
+                        <input class="form-control image-background" name="name" type="password" 
+                          [(ngModel)]="loginpassword" formControlName="password" required maxlength="24">
+                        <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                      </div>
+                    </div>
+                  </form>
+
+                  <form [formGroup]="customerForm" class="needs-validation" novalidate *ngIf="!isLogin">
+                    <div class="form-group row ">
+                      <label class="col-md-3 text-right">
+                        Nom et Prénom
+                      </label>
+                      <div class="col-md-6">
+                        <input class="form-control image-background" name="name" type="text" [readonly]="isLoggedIn"
+                          [(ngModel)]="customerObject.name" formControlName="name" required>
+                        <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                      </div>
+                    </div>
+                    <div class="form-group row ">
+                      <label class="col-md-3 text-right">
+                        Téléphone
+                      </label>
+                      <div class="col-md-6">
+                        <input class="form-control image-background" name="tel" type="number" [readonly]="isLoggedIn"
+                          [(ngModel)]="customerObject.tel" formControlName="tel" required maxlength="12">
+                        <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                      </div>
+                    </div>
+                    <div class="form-group row ">
+                      <label class="col-md-3 form-control-label text-right">
+                        E-mail
+                      </label>
+                      <div class="col-md-6">
+                        <input class="form-control image-background" type="email" name="email" [readonly]="isLoggedIn"
+                          [(ngModel)]="contactObject.email" formControlName="email" required
+                          (ngModelChange)="valuechange($event)">
+                        <div class="invalid-feedback">Champ vide ou e-mail invalid</div>
+                        <div class="text-danger mt-2" *ngIf="usedMail && contactObject.email ">Cette adresse email est
+                          déja utilisée !</div>
+                      </div>
+                    </div>
+                    <div class="form-group row ">
+                      <label class="col-md-3 text-right">
+                        Mot de passe
+                      </label>
+                      <div class="col-md-6">
+                        <input class="form-control image-background" name="name" type="password" [readonly]="isLoggedIn"
+                          [(ngModel)]="customerObject.password" formControlName="password" required maxlength="24">
+                        <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                      </div>
+                    </div>
+                    <!-- <div class="justify-content-center">
+                      <div class="form-group row ">
+                        <div class="col-md-6 offset-md-3">
+                          <input type="checkbox" value="1" required="" [(ngModel)]="rulesObject.receveOffer"
+                            formControlName="receveOffer">
+                          Recevez les offres de nos partenaires
+                          <div class="invalid-feedback">
+                            Vous devez accepter avant de soumettre.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row ">
+                        <div class="col-md-6 offset-md-3">
+                          <input type="checkbox" value="1" required="" [(ngModel)]="rulesObject.confidentiality"
+                            formControlName="confidentiality">
+                          Confidentialité des données client
+                          Les données personnelles que vous fournissez sont utilisées pour répondre aux questions,
+                          traiter les commandes ou permettre l'accès à des informations spécifiques. Vous disposez
+                          d'un droit de modification et de suppression de toutes les informations personnelles
+                          présentes dans la page « Mon compte ».
+                          <div class="invalid-feedback">
+                            Vous devez accepter avant de soumettre.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row ">
+                        <div class="col-md-6 offset-md-3">
+                          <input type="checkbox" value="1" required="" [(ngModel)]="rulesObject.insecription"
+                            formControlName="insecription">
+                          Inscrivez-vous à notre newsletter
+                          Vous pouvez vous désinscrire à tout moment. Pour cela, veuillez trouver nos coordonnées
+                          dans
+                          les mentions légales.
+                          <div class="invalid-feedback">
+                            Vous devez accepter avant de soumettre.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row ">
+                        <div class="col-md-6 offset-md-3">
+                          <input type="checkbox" value="1" required="" class="" [(ngModel)]="rulesObject.termsAgreement"
+                            formControlName="termsAgreement">
+                          J'accepte les termes et conditions et la politique de confidentialité
+                          <div class="invalid-feedback">
+                            Vous devez accepter avant de soumettre.
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+                  </form>
+
+                  <footer class="form-footer">
+                    <button type="submit" class="btn mt-4 mb-3 brown-background text-white cursor-pointer float-right" [disabled]="usedMail && contactObject.email"
+                      (click)="nextTab('ngb-panel-1')">
+                      <p class="mt-1 mb-1 h6">CONTINUER</p>
+                    </button>
+                  </footer>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-panel>
+
+        <ngb-panel id="ngb-panel-1" >
+          <ng-template ngbPanelTitle>
+            <div class="text-dark h5">Adresses</div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <form class="mt-1" [formGroup]="customerAdress" class="needs-validation" novalidate>
+              <p>
+                L'adresse sélectionnée sera utilisée à la fois comme adresse personnelle (pour la facturation)  <br> et adresse de livraison
+              </p>
+              <div>
+                <section class="form-fields mt-5">
+                  <!-- <div class="form-group row ">
+                    <label class="col-md-3 form-control-label required">
+                      Numéro
+                    </label>
+                    <div class="col-md-6">
+                      <input class="form-control image-background" name="number" type="number" maxlength="128"
+                        [(ngModel)]="adressObject.number" formControlName="number">
+                    </div>
+                    <div class="col-md-3 form-control-comment">
+                    </div>
+                  </div> -->
+                  <div class="form-group row ">
+                    <label class="col-md-3 form-control-label text-right">
+                      Adresse
+                    </label>
+                    <div class="col-md-6">
+                      <input class="form-control image-background" name="street" type="text" maxlength="128" [readonly]="isLoggedIn"
+                        [(ngModel)]="adressObject.street" formControlName="street" required>
+                      <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                    </div>
+
+                  </div>
+                  <div class="form-group row ">
+                    <label class="col-md-3 form-control-label required text-right">
+                      Zip / code postal
+                    </label>
+                    <div class="col-md-6">
+                      <input class="form-control image-background" name="geoCode" type="number" maxlength="12" [readonly]="isLoggedIn"
+                        minlength="4" [(ngModel)]="adressObject.geoCode" formControlName="geoCode" required>
+                      <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                    </div>
+                  </div>
+                  <div class="form-group row ">
+                    <label class="col-md-3 form-control-label required text-right">
+                      Ville
+                    </label>
+                    <div class="col-md-6">
+                      <input class="form-control image-background" name="city" type="text" [readonly]="isLoggedIn"
+                        [(ngModel)]="adressObject.city" formControlName="city" required>
+                      <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                    </div>
+                  </div>
+                  <div class="form-group row mt-5">
+                    <div class="col-md-9 col-md-offset-3">
+                      <input type="checkbox" value="1" checked="true" [readonly]="isLoggedIn">
+                      <label class="ml-3">Utilisez également cette adresse pour la facture</label>
+                    </div>
+                  </div>
+                </section>
+                <footer class="form-footer">
+                  <button type="submit" class="btn mt-4 mb-3 brown-background text-white cursor-pointer float-right"
+                    (click)="nextTab('ngb-panel-2')">
+                    <p class="mt-1 mb-1 h6">CONTINUER</p>
+                  </button>
+                </footer>
+              </div>
+            </form>
+          </ng-template>
+        </ngb-panel>
+
+        <ngb-panel id="ngb-panel-2" [disabled]="delivelryDisabled">
+          <ng-template ngbPanelTitle>
+            <div class="text-dark h5">Livraison</div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <form [formGroup]="deliveryForm" class="needs-validation" novalidate>
+              <div class="form-fields">
+                <div class="delivery-options ">
+                  <div class="row image-background pt-3 pb-3">
+                    <div class="col-sm-1">
+                      <span>
+                        <input type="radio" name="forDeliver" checked="true" formControlName="forDeliver" value=false>
+                      </span>
+                    </div>
+                    <label for="delivery_option_1" class="col-xs-9 col-sm-11 ">
+                      <div class="row">
+                        <div class="col-sm-5 col-xs-12">
+                          <div class="row">
+                            <div class="col-xs-12 offset-md-5 offset-sm-0 ">
+                              <span class="h6">Herbabio</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                          <span class="carrier-delay">Retrait en magasin</span>
+                        </div>
+                        <div class="col-sm-3 col-xs-12">
+                          <span class="carrier-price">Gratuite</span>
+                        </div>
+                      </div>
+                    </label>
+                    <div class="invalid-feedback">Ce champ est obligatoire.</div>
+                  </div>
+                  <br>
+                  <div class="row image-background pt-3 pb-3">
+                    <div class="col-sm-1">
+                      <input type="radio" name="forDeliver" formControlName="forDeliver" value=true>
+                    </div>
+                    <label class="col-xs-9 col-sm-11 ">
+                      <div class="row">
+                        <div class="col-sm-5 col-xs-12">
+                          <div class="row">
+                            <div class="col-xs-12 col-md-4">
+                              <img src="assets/truck.png" alt="My carrier" width="40" height="30">
+                            </div>
+                            <div class="col-xs-12  col-md-8">
+                              <span class="h6">Aramex</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                          <div>
+                            Livraison sous 72 H </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-12">
+                          <span class="">7.000 DT</span>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <small class="text-danger" *ngIf="deliveryError">
+                  Vous devez choisir un mode de livraison.</small>
+                <div class="mt-3">
+                  <label>Si vous souhaitez ajouter un commentaire au sujet de votre commande, veuillez
+                    l'écrire dans le champ ci-dessous.</label>
+                  <textarea rows="2" cols="100" class="w-100 ml-xl-2" [(ngModel)]="deliveryForm.description"
+                    formControlName="description"></textarea>
+                </div>
+              </div>
+            </form>
+            <footer class="form-footer">
+              <button type="button " class="btn mt-4 mb-3 brown-background text-white cursor-pointer float-right"
+                (click)="nextTab('ngb-panel-3')">
+                <p class="mt-1 mb-1 h6">CONTINUER</p>
+              </button>
+            </footer>
+          </ng-template>
+        </ngb-panel>
+
+        <ngb-panel id="ngb-panel-4" [disabled]="paiementDisabled">
+          <ng-template ngbPanelTitle>
+            <div class="text-dark h5">Paiement</div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <form [formGroup]="PaiementForm" class="needs-validation" novalidate>
+              <!-- <div class="custom-control custom-radio mb-3">
+                <input type="radio" id="customRadio1" name="deliveryPaiement" class="custom-control-input"
+                  [(ngModel)]="PaiementForm.deliveryPaiement" formControlName="deliveryPaiement" value="false"
+                  (change)="paiementchange($event)">
+                <label class="custom-control-label" for="customRadio1">Paiement par carte bancaire </label>
+              </div>
+              <div class="custom-control custom-radio mb-2">
+                <input type="radio" id="customRadio2" name="deliveryPaiement" class="custom-control-input"
+                  [(ngModel)]="PaiementForm.deliveryPaiement" formControlName="deliveryPaiement" value="true"
+                  (change)="paiementchange($event)">
+                <label class="custom-control-label" for="customRadio2">Paiement à la livraison</label>
+              </div>
+              <small class="text-danger ml-4" *ngIf="paiemntError">
+                Veuillez sélectionner l'un des modes.</small> -->
+
+              <ul class="mt-3">
+                <input required type="checkbox" value="1" checked="true" class="mr-2 mb-3"
+                  [(ngModel)]="PaiementForm.deliveryPaiement" formControlName="deliveryPaiement"
+                  (change)="paiementchange($event)">
+                Paiement à la livraison <br>
+                <small class="text-danger ml-4" *ngIf="paiemntError">
+                  Cochez cette case pour continuer.</small>
+              </ul>
+
+              <ul class="mt-3">
+                <input required type="checkbox" value=true class="mr-2 mb-3"
+                  [(ngModel)]="PaiementForm.paiementAgreement" formControlName="paiementAgreement"
+                  (change)="agrementChange($event)">
+                  j'accepte les conditions générales et la politique de confidentialité. <br>
+                <small class="text-danger ml-4" *ngIf="agreementError">
+                  Cochez cette case pour continuer.</small>
+              </ul>
+
+              <footer class="form-footer">
+                <button type="button " class="btn mt-4 mb-3 brown-background text-white cursor-pointer float-right"
+                  (click)="addAction('ngb-panel-4')">
+                  <p class="mt-1 mb-1 h6">Passer la commande </p>
+                </button>
+              </footer>
+            </form>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+    <div class="col-lg-4 col-sm-12">
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+          <div class="mb-2"> <b>{{itemNumber}} </b> Element(s)</div>
+          <div class="card mb-2" *ngFor="let product of productArray">
+            <div class="card-body">
+              <div class="row d-inline-flex">
+                <div class="col-4 text-left p-0"><img src="{{product?.pictures[0].url}}" alt="" width="80"
+                    class="image-background" height="auto">
+                </div>
+
+                <div class="col-8 pr-0">
+                  <small>{{product.name}}</small><br>
+                  <small>Prix :{{product.productPrices[0].price | currency:'DT':'symbol':'1.2-3':'fr'}}</small><br>
+                  <small>Qt : {{product.quantity}} pièce</small><br>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-block mt-3">
+            <div class="d-flex justify-content-between mb-3">
+              <div class="ml-2">Total:</div>
+              <div class="mr-2">{{totalAmount | currency:'DT':'symbol':'1.2-3':'fr' }}</div>
+            </div>
+            <div class="d-flex justify-content-between mb-3" *ngIf="totalAmount>60">
+              <div class="ml-2">Livraison:</div>
+              <div class="mr-2">Gratuite</div>
+            </div>
+            <div class="d-flex justify-content-between mb-3" *ngIf="totalAmount<60">
+              <div class="ml-2">Frais de livraison:</div>
+              <div class="mr-2">7,000 DT</div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+              <div class="ml-2">Timbre fiscal  :</div>
+              <div class="mr-2">0.600 DT</div>
+            </div>
+            <div class="d-flex justify-content-between mb-3 image-background">
+              <div class="mt-2 mb-2 ml-2">TTC&nbsp;(tax incl.)</div>
+              <div class="mt-2 mb-2 font-weight-bold mr-2" *ngIf="totalAmount>60">{{totalAmount + 0.6 | currency:'DT':'symbol':'1.2-3':'fr' }}</div>
+              <div class="mt-2 mb-2 font-weight-bold mr-2" *ngIf="totalAmount<60">{{totalAmount + 0.6 + 7 | currency:'DT':'symbol':'1.2-3':'fr' }}</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-slogan></app-slogan>

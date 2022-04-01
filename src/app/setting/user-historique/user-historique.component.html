@@ -1,0 +1,54 @@
+<div class="background bg-light-color pb-xl-5">
+    <div class="container pt-3 pb-xl-5">
+      <div class="h3 font-weight-bold font-green3 text-center mt-5 mb-md-5 pl-4 ">Historique de vos commandes</div>
+      <div class="row d-flex justify-content-center pt-5 pb-5 d-flex">
+        <div class="col-10 ml-lg-0 ">
+            <div class="card text-center" *ngIf="orderArray.length>0">
+                <div class="h5 mt-3">Vous trouvez ici vos commandes passées depuis la création de votre compte</div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Référence De Commande</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Prix Total</th>
+                            <th scope="col">Paiement</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col">Facture</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let order of orderArray">
+                          <tr>
+                            <td>{{order.id}}</td>
+                            <td>{{order.createdAt | date:'dd/MM/yyyy'}}</td>
+                            <td>{{order.totalPrice | currency:'DT':'symbol':'1.2-3':'fr'}}</td>
+                            <td *ngIf="order.deliveryPrice>0">Paiement Comptant à La Livraison (Cash on Delivery)</td>
+                            <td *ngIf="order.deliveryPrice<1">Paiement Comptant au Magasin</td>
+                            <td *ngIf="order.isCompleted==false"><span class="badge badge-danger">En Cours</span></td>
+                            <td *ngIf="order.isCompleted==true"><span class="badge badge-success">Expédié</span></td>
+                            <td>-</td>
+                            <td>Détail Commander à Nouveau</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                </div>
+            </div>
+              <div class="card text-center" *ngIf="orderArray.length<1">
+                <div class="alert alert-warning" role="alert">
+                  Vous n'avez pas encore passé de commande
+                </div>
+                <div class="card-body">
+                  <div class="h5 mt-3">Vous trouvez ici vos commandes passées depuis la création de votre compte</div>
+                </div>
+              </div>
+              <div class="d-flex mt-4">
+                <div routerLink="/setting" class="cursor-pointer h6 mr-2 mr-md-4"> < Mon compte</div>
+                <div routerLink="/" class="cursor-pointer h6"> <img src="assets/house-door-fill.svg" class="pb-1"> Accueil</div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <app-slogan></app-slogan>

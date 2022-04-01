@@ -1,0 +1,165 @@
+@media screen and (max-width:2560px)  {
+  .img-cercle{
+    position: relative;
+    left: 47%;
+    top: -55px;
+  }
+  .cuted{
+    position: relative;
+    top: 203px;
+  }
+  .midle{
+    position: relative;
+    top: -100px;
+  }
+}
+@media screen and (min-width:1440px) {
+  .background{
+    background-image: url(https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630055234/page-header_swig9b.jpg);
+    background-repeat: no-repeat;
+    background-size: cover ;
+    position: relative;
+    width: 100%;
+    z-index: 555;
+
+  }
+  .img-cercle{
+    position: relative;
+    left: 45%;
+    top: -17px;
+  }
+  .cuted{
+    position: relative;
+    top: 176px;
+  }
+  .midel{
+    position: relative;
+    top: -127px;
+    z-index: -591;
+    height: 519px;
+  }
+
+}
+
+@media screen and (min-width:1024px) and (max-width:1439px) {
+  .background{
+    background-image: url(https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630055234/page-header_swig9b.jpg);
+    background-repeat: no-repeat;
+    background-size: contain ;
+    position: relative;
+    width: 100%;
+    z-index: 555;
+
+  }
+  .img-cercle{
+    position: relative;
+    left: 45%;
+    top: -17px;
+  }
+  .cuted{
+    position: relative;
+    top: 176px;
+  }
+  .midel{
+    position: relative;
+    top: -127px;
+    z-index: -591;
+    height: 519px;
+  }
+ }
+
+@media screen  and (max-width:1024px) {
+  .img-cercle{
+    position: relative;
+    left: 43%;
+    top: 11px;
+  }
+  .background{
+    background-image: url(https://res.cloudinary.com/http-next-ioc-tn/image/upload/f_auto/v1630055234/page-header_swig9b.jpg);
+    background-repeat: no-repeat;
+    background-size: contain ;
+    position: relative;
+    width: 100%;
+    z-index: 555;
+  }
+  .cuted{
+    position: relative;
+    top: 200px;
+  }
+  .midel{
+    position: relative;
+    top: -128px;
+    z-index: -56;
+    height: 499px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .img-cercle{
+    position: relative;
+    left: 41%;
+    top: 77px;
+  }
+  .midel{
+    position: relative;
+    top: -80px;
+    z-index: -56;
+    height: 444px;
+  }
+
+}
+@media screen and (max-width:425px) {
+  .img-cercle{
+    position: relative;
+    left: 32%;
+  }
+  .midel{
+    position: relative;
+    top: -79px;
+    z-index: -56;
+    height: 511px;
+  }
+}
+@media screen and (max-width:375px) {
+  .img-cercle{
+    position: relative;
+    left: 30%;
+  }
+  .midel{
+    position: relative;
+    top: -77px;
+    z-index: -56;
+    height: 530px;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .img-cercle{
+    position: relative;
+    left: 26%;
+    bottom: -168%;
+  }
+  .midel{
+    position: relative;
+    top: -79px;
+    z-index: -56;
+    height: 566px;
+  }
+}
+@media screen and (max-width:300px) {
+  .img-cercle{
+    position: relative;
+    left: 25%;
+    bottom: -175%;
+  }
+  .midel{
+    position: relative;
+    top: -77px;
+    z-index: -56;
+    height: 571px;
+  }
+}
+:host ::ng-deep .border-dark{
+  border-color: #5a3715!important;
+}
+
